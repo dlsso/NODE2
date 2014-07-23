@@ -18,6 +18,13 @@ app.get('/', function(req, res) {
 
 });
 
+app.get('/:filename', function(req, res) {
+	req.params.filename
+	fs.readFile(filename, function (err, data){
+		res.send(data);
+	});
+});
+
 var server = app.listen(5819, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
