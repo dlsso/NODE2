@@ -1,10 +1,17 @@
+var fs = require('fs')
+var fileContents = fs.readFileSync('data.txt')
+// res.header('Content-Type', 'text/html')
+
+
+
 var express = require('express');
 
 var app = express();
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
-	res.send('<h1>Hello Boulder</h1>');
+	res.header('Content-Type', 'text/html')
+	res.send(fileContents);
 });
 
 var server = app.listen(5819, function() {
